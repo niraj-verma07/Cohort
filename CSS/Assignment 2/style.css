@@ -10,8 +10,15 @@ body {
 }
 
 #main {
-  width: 1535px;
-  height: 728px;
-  object-fit: contain;
   background-image: url(./groot.jpg);
+  width: 100vw;
+  height: 100vh;
+}
+
+p{
+  font-size: 200px;
+  color: red;
+  /* transform: translate(50%, 50%); */
+  object-fit: fill;
+  
 }
