@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=McLaren&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -10,15 +12,28 @@ body {
 }
 
 #main {
-  background-image: url(./groot.jpg);
-  width: 100vw;
-  height: 100vh;
+  padding: 40px;
+  width: 100%;
+  height: 100%;
+  background-image: url(https://images.unsplash.com/photo-1617335692487-caadd35a7f20?q=80&w=2058&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-size: cover;
+  background-position: center;
+  text-align: center;
 }
-
-p{
-  font-size: 200px;
-  color: red;
-  /* transform: translate(50%, 50%); */
-  object-fit: cover;
-  
+h1 {
+  font-family: "McLaren", sans-serif;
+  color: black;
+  font-size: 80px;
+}
+#mac {
+  color: rgb(216, 116, 116);
+}
+button {
+  font-size: 20px;
+  font-family: "McLaren", sans-serif;
+  padding: 5px 10px;
+  background-color: #1261cf;
+  color: white;
+  border: none;
+  border-radius: 5px;
 }
