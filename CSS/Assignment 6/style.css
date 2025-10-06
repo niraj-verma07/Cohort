@@ -21,6 +21,10 @@ body {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+
+  background-image: url(./marvel.webp);
+  background-size:cover;
+  /* background-position: center; */
 }
 
 .card {
@@ -67,17 +71,17 @@ body {
 }
 
 .heading {
-    width: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.msg{
-    color: rgba(255, 255, 255, 0.799);
-    margin-top: 5px;
-    padding-top: 5px;
-    border-top: 2px solid white;
+.msg {
+  color: rgba(255, 255, 255, 0.799);
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 2px solid white;
 }
 
 .card:hover .bottom {
