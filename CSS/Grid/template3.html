@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      main {
+        height: 100%;
+        width: 100%;
+        background-color: black;
+        display: grid;
+        grid-gap: 15px;
+        padding: 10px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 70px 1fr 0.5fr 0.5fr;
+
+        grid-template-areas:
+          "header header header"
+          "section section section"
+          "div-left bottom-up div-right"
+          "div-left bottom-down div-right";
+      }
+      header {
+        background-color: crimson;
+        grid-area: header;
+      }
+      section {
+        background-color: lightseagreen;
+        grid-area: section;
+      }
+
+      #div-left {
+        background-color: aquamarine;
+        grid-area: div-left;
+      }
+
+      #div-right {
+        background-color: magenta;
+        grid-area: div-right;
+      }
+
+      #btm-up {
+        background-color: lightgreen;
+        grid-area: bottom-up;
+      }
+
+      #btm-down {
+        background-color: blanchedalmond;
+        grid-area: bottom-down;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>Header</header>
+      <section>Section</section>
+      <div id="div-left">Div left</div>
+      <div id="btm-up">Bottom up</div>
+      <div id="btm-down">Bottom down</div>
+      <div id="div-right">Div right</div>
+    </main>
+  </body>
+</html>
