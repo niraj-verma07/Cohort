@@ -24,6 +24,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: #28304d;
+  position: relative;
   @include center();
 }
 main {
@@ -42,13 +43,12 @@ main {
     "left-btm btm-mid1 btm-mid2 btm-right";
   grid-gap: 20px;
 
-  .box{
+  .box {
     transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   }
-    .box:hover {
-      transform: scale(1.03);
-    }
-
+  .box:hover {
+    transform: scale(1.03);
+  }
 
   .box1 {
     grid-area: top-left;
@@ -137,12 +137,11 @@ main {
   animation: rotate 10s infinite linear;
 }
 
-
 @keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
