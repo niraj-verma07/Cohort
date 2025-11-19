@@ -1,12 +1,13 @@
-var grow = 0;
-var btn = document.querySelector("button");
-var h2 = document.querySelector("h2");
-var inner = document.querySelector(".inner");
+let grow = 0;
+let btn = document.querySelector("button");
+let h2 = document.querySelector("h2");
+let inner = document.querySelector(".inner");
+let timer = document.querySelector("#timer");
 
 btn.addEventListener("click", function () {
   btn.style.pointerEvents = "none";
 
-  var num = 50 + Math.floor(Math.random() * 50);
+  let num = 50 + Math.floor(Math.random() * 50);
 
   console.log("Your file will be downloaded in", num / 10, "seconds");
 
@@ -20,5 +21,6 @@ btn.addEventListener("click", function () {
     clearInterval(int);
     btn.innerHTML = "Downloaded";
     btn.style.opacity = 0.5;
+    timer.innerHTML = `Downloaded in <span>${num / 10}</span> seconds`;
   }, num * 100);
 });
