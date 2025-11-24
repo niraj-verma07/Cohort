@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+    background-color: black;
+}
+
+section{
+    height: 100%;
+    width: 350px;
+    background-color: black;
+    margin: auto;
+}
+
+.all-reels{
+    height: 100%;
+    width: 100%;
+}
