@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      :root {
+        --x: 200px;
+        --y: 200px;
+      }
+
+      .box {
+        height: 100%;
+        width: 100%;
+        background: radial-gradient(
+          150px at var(--x) var(--y),
+          rgb(255, 255, 255),
+          rgb(0, 0, 0)
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+
+    <script>
+      addEventListener("mousemove", (e) => {
+        document.body.style.setProperty("--x", e.clientX + "px");
+        document.body.style.setProperty("--y", e.clientY + "px");
+      });
+    </script>
+  </body>
+</html>
