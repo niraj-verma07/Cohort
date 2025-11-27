@@ -121,24 +121,38 @@ const reels = [
   },
 ];
 
-var sum = "";
-reels.forEach(function (elem) {
-  sum =
-    sum +
-    `<div class="reel">
-          <video autoplay loop muted src="${elem.video}"></video>
+var allReels = document.querySelector(".all-reels");
+
+function addData() {
+  var UI = "";
+  reels.forEach(function (elem, idx) {
+    UI =
+      UI +
+      `<div class="reel">
+          <video autoplay loop ${elem.isMuted ? "muted" : ""} src="${
+        elem.video
+      }"></video>
+      <div class="mute" id="${idx}">
+      ${
+        elem.isMuted
+          ? `<i class="ri-volume-up-fill"></i>`
+          : `<i class="ri-volume-mute-line"></i>`
+      }
+      </div>
           <div class="bottom">
             <div class="user">
               <img
                 src="${elem.userprofile}"
                 alt="">
               <h4>${elem.username}</h4>
-              <button>${elem.isFollowed ? "Unfollow" : "Follow"}</button>
+              <button id="${idx}" class="follow" >${
+        elem.isFollowed ? "Unfollow" : "Follow"
+      }</button>
             </div>
             <h3>${elem.caption}</h3>
           </div>
           <div class="right">
-            <div class="like">
+            <div id="${idx}" class="like">
               <h4 class="like-icon icon">${
                 elem.isLiked
                   ? '<i class="love ri-heart-3-fill"></i>'
@@ -159,8 +173,43 @@ reels.forEach(function (elem) {
             </div>
           </div>
         </div>`;
+  });
+
+  allReels.innerHTML = UI;
+}
+
+addData();
+
+allReels.addEventListener("click", (dets) => {
+  // console.log(dets.target)
+  // console.log(reels[dets.target.id]);
+
+  if (dets.target.className == "like") {
+    if (!reels[dets.target.id].isLiked) {
+      reels[dets.target.id].likeCount++;
+      reels[dets.target.id].isLiked = true;
+    } else {
+      reels[dets.target.id].likeCount--;
+      reels[dets.target.id].isLiked = false;
+    }
+    addData();
+  }
+
+  if (dets.target.className == "follow") {
+    if (!reels[dets.target.id].isFollowed) {
+      reels[dets.target.id].isFollowed = true;
+    } else {
+      reels[dets.target.id].isFollowed = false;
+    }
+    addData();
+  }
+
+  if (dets.target.className == "mute") {
+    if (!reels[dets.target.id].isMuted) {
+      reels[dets.target.id].isMuted = true;
+    } else {
+      reels[dets.target.id].isMuted = false;
+    }
+    addData();
+  }
 });
-
-var allReels = document.querySelector(".all-reels");
-
-allReels.innerHTML = sum;
