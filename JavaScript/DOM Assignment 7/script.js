@@ -135,8 +135,8 @@ function addData() {
       <div class="mute" id="${idx}">
       ${
         elem.isMuted
-          ? `<i class="ri-volume-up-fill"></i>`
-          : `<i class="ri-volume-mute-line"></i>`
+          ? `<i class="ri-volume-mute-fill"></i> `
+          : `<i class="ri-volume-up-fill"></i>`
       }
       </div>
           <div class="bottom">
