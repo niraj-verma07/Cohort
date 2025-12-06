@@ -90,3 +90,24 @@ class User {
 }
 
 let user1 = new User();
+
+//Prototypes
+
+// this => this ki value likhte waqt nahi chalte waqt decide hoti hai
+
+class Human {
+  constructor() {
+    this.name = "Niraj";
+    this.age = 20;
+  }
+}
+
+Human.prototype.saansLo = function () {
+  console.log("Saans Lo");
+};
+Human.prototype.khaanaKhaao = function () {
+  console.log("Khaana Khaao");
+};
+
+let h1 = new Human();
+let h2 = new Human();
