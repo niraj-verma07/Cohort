@@ -428,16 +428,87 @@ body {
             }
         }
 
-        .show-desktop-line {
-            width: 2px;
-            height: 48px;
-            border-left: 1px solid rgba(255, 255, 255, 0.2);
-            margin-left: 6px;
-            cursor: pointer;
 
-            &:hover {
-                box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* Context Menu Styles */
+.context-menu {
+    position: absolute;
+    width: 260px;
+    background-color: rgba(32, 32, 32, 0.75);
+    /* Dark semi-transparent */
+    backdrop-filter: blur(20px) saturate(125%);
+    /* Glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 6px;
+    display: none;
+    /* Hidden by default */
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    /* Always on top */
+    animation: fade-in 0.1s ease-out;
+
+    /* Menu Item */
+    .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        height: 36px;
+        border-radius: 4px;
+        cursor: default;
+        color: #fff;
+        font-size: 13px;
+        transition: background 0.1s;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Icons on the left */
+        .item-icon {
+            width: 20px;
+            margin-right: 12px;
+            text-align: center;
+            font-size: 16px;
+            color: #fff;
+            opacity: 0.8;
+
+            &.small {
+                font-size: 14px;
             }
         }
+
+        /* Text fills space */
+        span {
+            flex-grow: 1;
+        }
+
+        /* Arrow on the right */
+        .arrow {
+            font-size: 10px;
+            opacity: 0.5;
+        }
+    }
+
+    /* Separator Line */
+    .separator {
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.1);
+        margin: 4px 10px;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }

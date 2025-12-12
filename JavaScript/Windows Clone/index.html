@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Windows 11 Clone</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -127,6 +128,56 @@
 
         </div>
 
+        <div class="context-menu" id="contextMenu">
+            <div class="menu-item">
+                <i class="fa-solid fa-border-all item-icon small"></i>
+                <span>View</span>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </div>
+            <div class="menu-item">
+                <i class="fa-solid fa-arrow-down-a-z item-icon small"></i>
+                <span>Sort by</span>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </div>
+            <div class="menu-item">
+                <i class="fa-solid fa-rotate-right item-icon small"></i>
+                <span>Refresh</span>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="menu-item">
+                <i class="fa-solid fa-circle-plus item-icon small"></i>
+                <span>New</span>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="menu-item">
+                <i class="fa-solid fa-display item-icon"></i>
+                <span>Display settings</span>
+            </div>
+            <div class="menu-item">
+                <i class="fa-solid fa-pen-nib item-icon"></i>
+                <span>Personalize</span>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="menu-item">
+                <i class="fa-solid fa-terminal item-icon"></i>
+                <span>Open in Terminal</span>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="menu-item">
+                <i class="fa-regular fa-square-plus item-icon"></i>
+                <span>Show more options</span>
+            </div>
+        </div>
+
         <footer class="taskbar">
 
             <div class="taskbar-section left">
@@ -175,9 +226,9 @@
                     <span class="lang">ENG <br><small>IN</small></span>
 
                     <div class="status-icons">
-                        <i class="fa-solid fa-wifi"></i>
-                        <i class="fa-solid fa-volume-high"></i>
-                        <i class="fa-solid fa-battery-three-quarters"></i>
+                        <i class="ri-wifi-line"></i>
+                        <i class="ri-volume-up-line"></i>
+                        <i class="ri-battery-low-line"></i>
                     </div>
                 </div>
 
@@ -186,9 +237,8 @@
                     <span class="date">11-12-2025</span>
                 </div>
                 <div class="notification-bell">
-                    <i class="fa-regular fa-bell"></i>
+                    <i class="ri-notification-2-line"></i>
                 </div>
-                <div class="show-desktop-line"></div>
             </div>
         </footer>
     </main>
