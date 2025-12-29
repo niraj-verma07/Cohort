@@ -12,9 +12,13 @@ const App = () => {
     e.preventDefault();
 
     const oldUsers = [...allUsers];
-    oldUsers.push({ name, url, position, desc });
+    // oldUsers.push({ name, url, position, desc });
 
-    setAllUsers(oldUsers);
+    // setAllUsers(oldUsers);
+
+    //Or we can write
+
+    setAllUsers([...oldUsers, { name, url, position, desc }]);
 
     console.log(oldUsers);
     console.log("Form Submitted");
