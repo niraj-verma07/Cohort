@@ -1,33 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Counter from "./Counter";
-import axios from "axios";
+import Pokemon from "./Pokemon";
+import RandomUser from "./RandomUser";
 
 const App = () => {
-  const [allPokemon, setAllPokemon] = useState([]);
-  const getData = async () => {
-    const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
-    setAllPokemon(response.data.results);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+ 
 
   return (
-    <div className="px-5 py-6">
-      <button
-        className="px-2 py-3 bg-emerald-400 rounded-2xl text-white"
-        onClick={getData}
-      >
-        Get Data
-      </button>
-      {allPokemon.map(function (elem, idx) {
-        return (
-          <h1 key={idx} className="text-2xl mb-5">
-            {elem.name}
-          </h1>
-        );
-      })}
+    <div>
+      {/* <Counter />
+      <Pokemon /> */}
+      <RandomUser />
     </div>
   );
 };
