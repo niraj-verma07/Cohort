@@ -14,8 +14,8 @@ const RandomUser = () => {
   useEffect(() => {
     getData();
   }, [num]);
-    
-    // Jab jab num ka value change hoga tab tab api call hoga side stack me
+
+  // Jab jab num ka value change hoga tab tab api call hoga side stack me
   return (
     <div className="px-5 py-6 flex flex-col gap-5">
       <h2 className="text-emerald-600">{username}</h2>
