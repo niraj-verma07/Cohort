@@ -1,12 +1,14 @@
 import React from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import Product from "./pages/Product";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <div>
+      <Navbar />
       {/* <Routes></Routes> => Collection of all routes */}
       <Routes>
         <Route path="/" element={<Home />} />
