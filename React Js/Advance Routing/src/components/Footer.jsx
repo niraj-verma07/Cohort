@@ -10,6 +10,7 @@ const Footer = () => {
       <button
         onClick={() => {
           navigate("/courses");
+          // navigate(-1); => For back button functionality
         }}
       >
         Explore courses
