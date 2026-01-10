@@ -11,6 +11,11 @@ const Courses = () => {
         <p>Sale is LIVE!!!</p>
         <p>Sale is LIVE!!!</p>
         <p>Sale is LIVE!!!</p>
+        <p>Sale is LIVE!!!</p>
+        <p>Sale is LIVE!!!</p>
+        <p>Sale is LIVE!!!</p>
+        <p>Sale is LIVE!!!</p>
+        <p>Sale is LIVE!!!</p>
       </div>
 
       <Outlet />
