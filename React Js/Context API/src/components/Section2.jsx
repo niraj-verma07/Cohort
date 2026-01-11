@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import AllCourses from "./Allcourses";
 
-const Section2 = () => {
+const Section2 = (props) => {
   return (
-    <div>Section2</div>
-  )
-}
+    <div>
+      Section2
+      <AllCourses />
+    </div>
+  );
+};
 
-export default Section2
+export default Section2;

@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import Course from "./Course";
 
-const Allcourses = () => {
+const AllCourses = (props) => {
   return (
-    <div>Allcourses</div>
-  )
-}
+    <div>
+      AllCourses
+      <Course />
+      <Course />
+      <Course />
+      <Course />
+    </div>
+  );
+};
 
-export default Allcourses
+export default AllCourses;
