@@ -1,3 +1,8 @@
+/**
+ * server ko start krna
+ * database se connect krna
+ */
+
 require("dotenv").config();
 const app = require("./src/app");
 const connectToDb = require("./src/config/database");
