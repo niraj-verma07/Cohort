@@ -5,11 +5,14 @@
 const express = require("express");
 const noteModel = require("./models/notes.model");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 
+//Middleware
 app.use(express.json());
 app.use(cors());
+app.use(express.static("./public")); //e middleware public folder ke file ko publically avalaible bana deta hai
 
 /**
  * - POST /api/notes
@@ -67,6 +70,11 @@ app.patch("/api/notes/:id", async (req, res) => {
   res.status(200).json({
     message: "Note Updated",
   });
+});
+
+//Wild Card Api handler
+app.use("*name", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "/public/index.html")); //Wild Card Api (jab requested api nahi hoga tab e page send hoga)
 });
 
 module.exports = app;
