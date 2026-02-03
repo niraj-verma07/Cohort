@@ -5,7 +5,7 @@ const App = () => {
   const [notes, setNotes] = useState([]);
 
   function fetchData() {
-    axios.get("https://cohort-8iq2.onrender.com//api/notes").then((res) => {
+    axios.get("https://cohort-8iq2.onrender.com/api/notes").then((res) => {
       console.log(res.data);
       setNotes(res.data.note);
     });
