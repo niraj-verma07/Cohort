@@ -20,7 +20,7 @@ const App = () => {
     // console.log(title.value, description.value);
 
     axios
-      .post("https://cohort-8iq2.onrender.com//api/notes", {
+      .post("https://cohort-8iq2.onrender.com/api/notes", {
         title: title.value,
         description: description.value,
       })
@@ -33,7 +33,7 @@ const App = () => {
 
   function handleDeleteNote(noteId) {
     axios
-      .delete(`https://cohort-8iq2.onrender.com//api/notes/${noteId}`)
+      .delete(`https://cohort-8iq2.onrender.com/api/notes/${noteId}`)
       .then((res) => {
         console.log(res.data);
         fetchData();
@@ -41,7 +41,7 @@ const App = () => {
   }
 
   function handleEdit(noteId, newDescription) {
-    axios.patch(`https://cohort-8iq2.onrender.com//api/notes/${noteId}`, {
+    axios.patch(`https://cohort-8iq2.onrender.com/api/notes/${noteId}`, {
       description: newDescription,
     });
 
