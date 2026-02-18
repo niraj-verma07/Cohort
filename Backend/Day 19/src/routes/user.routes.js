@@ -1,5 +1,9 @@
 const express = require("express");
-const { followUserController } = require("../controllers/user.controller");
+const {
+  followUserController,
+  unfollowUserController,
+} = require("../controllers/user.controller");
+const identifyUser = require("../middlewares/auth.middleware");
 
 const userRouter = express.Router();
 
@@ -8,6 +12,13 @@ const userRouter = express.Router();
  * @description Follow a user
  * @access Private
  */
-userRouter.post("/follow/:userid", followUserController);
+userRouter.post("/follow/:username", identifyUser, followUserController);
+
+/**
+ * @route POST /api/users/unfollow/:userid
+ * @description Unfollow a user
+ * @access Private
+ */
+userRouter.post("/unfollow/:username", identifyUser, unfollowUserController);
 
 module.exports = userRouter;
