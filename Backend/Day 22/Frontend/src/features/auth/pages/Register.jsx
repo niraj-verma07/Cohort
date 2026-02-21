@@ -1,28 +1,31 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
-import axios from "axios";
 import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router";
 
 const Register = () => {
+  const { user, loading, handleRegister } = useAuth();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { handleRegister, loading } = useAuth();
   const navigate = useNavigate();
 
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
-
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    handleRegister(username, email, password).then((res) => {
-      console.log(res);
-      navigate("/");
-    });
+    await handleRegister(username, email, password);
+
+    navigate("/");
+  };
+
+  if (loading) {
+    return (
+      <main>
+        <h1>Loading.....</h1>
+      </main>
+    );
   }
 
   return (
@@ -31,37 +34,30 @@ const Register = () => {
         <h1>Register</h1>
         <form onSubmit={handleSubmit}>
           <input
-            onInput={(e) => {
-              setUsername(e.target.value);
-            }}
+            onInput={(e) => setUsername(e.target.value)}
             type="text"
             name="username"
-            placeholder="Enter Username"
+            id="username"
+            placeholder="Enter username"
           />
           <input
-            onInput={(e) => {
-              setEmail(e.target.value);
-            }}
+            onInput={(e) => setEmail(e.target.value)}
             type="email"
             name="email"
-            placeholder="Enter Email"
+            id="email"
+            placeholder="Enter email address"
           />
           <input
-            onInput={(e) => {
-              setPassword(e.target.value);
-            }}
+            onInput={(e) => setPassword(e.target.value)}
             type="password"
             name="password"
-            placeholder="Enter Password"
+            id="password"
+            placeholder="Enter password"
           />
-          <button>Register</button>
+          <button className="button primary-button">Register</button>
         </form>
-
         <p>
-          Already have an account?{" "}
-          <Link className="toggleAuthForm" to="/login">
-            Login
-          </Link>
+          Already have an account ? <Link to={"/login"}>Login to account.</Link>
         </p>
       </div>
     </main>
