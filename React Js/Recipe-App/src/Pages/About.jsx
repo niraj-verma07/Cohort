@@ -43,9 +43,7 @@ const About = () => {
               focused on high performance and a seamless user interface.
             </p>
             <p className="text-gray-300 leading-relaxed text-lg">
-              Under the hood, it leverages the power of the MERN stack—utilizing
-              MongoDB for flexible recipe data storage, Express.js and Node.js
-              for a robust backend API, and React.js paired with Tailwind CSS to
+              Under the hood, it leverages the power of the React.js paired with Tailwind CSS to
               deliver a dynamic, beautifully styled frontend experience.
             </p>
           </section>
