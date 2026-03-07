@@ -7,19 +7,19 @@ async function uploadSongController(req, res) {
 
   const songBuffer = req.file.buffer;
   const { mood } = req.body;
-  const tags = id3.read(songBuffer);
+  const tags = id3.read(songBuffer); // Read ID3 tags from the song buffer
   //   console.log(tags);
 
   const [songFile, posterFile] = await Promise.all([
     storageService.uploadFile({
       buffer: songBuffer,
       filename: tags.title + ".mp3",
-      folder: "/Cohort-2/Moodify/Songs",
+      folder: "/Cohort/Moodify/Songs",
     }),
     storageService.uploadFile({
       buffer: tags.image.imageBuffer,
       filename: tags.title + ".jpeg",
-      folder: "/Cohort-2/Moodify/Posters",
+      folder: "/Cohort/Moodify/Posters",
     }),
   ]);
 
@@ -36,6 +36,16 @@ async function uploadSongController(req, res) {
   });
 }
 
+async function getSongController(req, res) {
+  const { mood } = req.query;
+  const song = await songModel.findOne({ mood });
+
+  res.status(200).json({
+    message: "Song fetched successfully",
+    song,
+  });
+}
 module.exports = {
   uploadSongController,
+  getSongController,
 };
