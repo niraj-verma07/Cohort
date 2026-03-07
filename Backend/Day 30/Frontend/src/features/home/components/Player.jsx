@@ -14,7 +14,7 @@ const formatTime = (seconds) => {
 };
 
 const Player = () => {
-  const { song } = useSong();
+  const { songs } = useSong();
 
   const audioRef = useRef(null);
   const progressRef = useRef(null);
@@ -34,7 +34,7 @@ const Player = () => {
       setIsPlaying(false);
       setCurrentTime(0);
     }
-  }, [song?.url]);
+  }, [songs?.url]);
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -104,13 +104,13 @@ const Player = () => {
 
   const progress = duration ? (currentTime / duration) * 100 : 0;
 
-  if (!song) return null;
+  if (!songs || songs.length === 0) return null;
 
   return (
     <div className="player">
       <audio
         ref={audioRef}
-        src={song.url}
+        src={songs.url}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         onEnded={handleSongEnd}
@@ -118,10 +118,14 @@ const Player = () => {
 
       {/* Poster + Info */}
       <div className="player__info">
-        <img className="player__poster" src={song.posterUrl} alt={song.title} />
+        <img
+          className="player__poster"
+          src={songs.posterUrl}
+          alt={songs.title}
+        />
         <div className="player__meta">
-          <p className="player__title">{song.title}</p>
-          <span className="player__mood">{song.mood}</span>
+          <p className="player__title">{songs.title}</p>
+          <span className="player__mood">{songs.mood}</span>
         </div>
       </div>
 
