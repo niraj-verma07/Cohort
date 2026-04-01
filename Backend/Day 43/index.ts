@@ -1,4 +1,4 @@
 const a = "World";
-const b = 5;
+const b = "5";
 
-console.log(a - b);
+console.log(a + b);
