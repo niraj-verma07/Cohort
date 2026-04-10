@@ -23,7 +23,7 @@ const sendTokenResponse = async (user, res, message) => {
 };
 
 export const registerUser = async (req, res) => {
-  const { email, contact, password, fullname } = req.body;
+  const { email, contact, password, fullname, isSeller } = req.body;
 
   try {
     // Check if user already exists
@@ -41,10 +41,10 @@ export const registerUser = async (req, res) => {
       contact,
       password,
       fullname,
+      role: isSeller ? "seller" : "buyer",
     });
 
     await sendTokenResponse(user, res, "User registered successfully");
-    
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Server error" });
