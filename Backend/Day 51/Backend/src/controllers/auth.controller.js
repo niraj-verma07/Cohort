@@ -2,9 +2,24 @@ import { config } from "../config/config.js";
 import userModel from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 
-const sendTokenResponse = async (user, res) => {
-  const token = jwt.sign({ id: user._id }, config.JWT_SECRET_KEY);
+const sendTokenResponse = async (user, res, message) => {
+  const token = jwt.sign({ id: user._id }, config.JWT_SECRET_KEY, {
+    expiresIn: "7d",
+  });
 
+  res.cookie("token", token);
+
+  res.status(200).json({
+    message,
+    success: true,
+    user: {
+      id: user._id,
+      email: user.email,
+      contact: user.contact,
+      fullname: user.fullname,
+      role: user.role,
+    },
+  });
 };
 
 export const registerUser = async (req, res) => {
@@ -28,7 +43,7 @@ export const registerUser = async (req, res) => {
       fullname,
     });
 
-    
+    await sendTokenResponse(user, res, "User registered successfully");
     
   } catch (error) {
     console.log(error);
