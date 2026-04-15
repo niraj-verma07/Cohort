@@ -36,7 +36,6 @@ export const register = async (req, res) => {
       $or: [{ email }, { contact }],
     });
 
-    
     if (existingUser) {
       return res
         .status(400)
