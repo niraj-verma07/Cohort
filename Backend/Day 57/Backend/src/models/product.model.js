@@ -1,6 +1,6 @@
 import moongoose from "mongoose";
 
-const productSchema = new moongoose.Schema(
+const productSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -11,7 +11,7 @@ const productSchema = new moongoose.Schema(
       required: true,
     },
     seller: {
-      type: moongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "user",
       required: true,
     },
@@ -31,6 +31,37 @@ const productSchema = new moongoose.Schema(
         url: {
           type: String,
           required: true,
+        },
+      },
+    ],
+    variants: [
+      {
+        images: [
+          {
+            url: {
+              type: String,
+              required: true,
+            },
+          },
+        ],
+        stock: {
+          type: Number,
+          default: 0,
+        },
+        attributes: {
+          type: Map,
+          of: String,
+        },
+        price: {
+          amount: {
+            type: Number,
+            required: true,
+          },
+          currency: {
+            type: String,
+            enum: ["USD", "EUR", "GBP", "JPY", "INR"],
+            default: "INR",
+          },
         },
       },
     ],
