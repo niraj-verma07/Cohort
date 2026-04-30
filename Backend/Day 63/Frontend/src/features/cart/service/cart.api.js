@@ -40,3 +40,10 @@ export const deleteCartItem = async ({ productId, variantId }) => {
   );
   return response.data;
 };
+
+export const createCartOrder = async ({ amount }) => {
+  const response = await cartApiInstance.post("/payment/create/order", {
+    amount,
+  });
+  return response.data;
+};

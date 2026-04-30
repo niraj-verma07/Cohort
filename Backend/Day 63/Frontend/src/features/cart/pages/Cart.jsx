@@ -28,6 +28,7 @@ const Cart = () => {
     handleIncrementCartItem,
     handleDecrementCartItem,
     handleDeleteCartItem,
+    handleCreateCartOrder,
   } = useCart();
   const navigate = useNavigate();
 
@@ -39,32 +40,6 @@ const Cart = () => {
   useEffect(() => {
     handleGetCart();
   }, []);
-
-  const handlePayment = () => {
-    const options = {
-      key: "YOUR_RAZORPAY_KEY",
-      amount: 50000, // Amount in paise
-      currency: "INR",
-      name: "Test Company",
-      description: "Test Transaction",
-      order_id: "order_9A33XWu170gUtm", // Generate order_id on server
-      handler: (response) => {
-        console.log(response);
-        alert("Payment Successful!");
-      },
-      prefill: {
-        name: "John Doe",
-        email: "john.doe@example.com",
-        contact: "9999999999",
-      },
-      theme: {
-        color: "#F37254",
-      },
-    };
-
-    const razorpayInstance = new Razorpay(options);
-    razorpayInstance.open();
-  };
 
   /* Sync local qty state when cartItems arrive */
 
@@ -91,6 +66,11 @@ const Cart = () => {
 
   const formatCurrency = (amount, currency = "INR") =>
     `${currency} ${Number(amount).toLocaleString("en-IN")}`;
+
+  async function handleCheckout() {
+    const order = await handleCreateCartOrder({amount:1000, currency:"INR"});
+    console.log(order.order);
+  }
 
   /* ─── Empty state ─── */
   if (!cart?.items?.length) {
@@ -538,7 +518,7 @@ const Cart = () => {
 
                 {/* Primary CTA */}
                 <button
-                  onClick={handlePayment}
+                  onClick={handleCheckout}
                   id="proceed-checkout"
                   className="w-full py-4 mb-3 text-[11px] uppercase tracking-[0.25em] font-medium transition-all duration-300"
                   style={{

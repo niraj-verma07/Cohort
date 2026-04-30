@@ -4,6 +4,7 @@ import {
   incrementCartItemQuantity,
   decrementCartItemQuantity,
   deleteCartItem,
+  createCartOrder,
 } from "../service/cart.api";
 import { useDispatch } from "react-redux";
 import {
@@ -42,11 +43,17 @@ export const useCart = () => {
     dispatch(removeItem({ productId, variantId }));
   }
 
+  async function handleCreateCartOrder({ amount }) {
+    const data = await createCartOrder({ amount });
+    return data;
+  }
+
   return {
     handleAddItem,
     handleGetCart,
     handleIncrementCartItem,
     handleDecrementCartItem,
     handleDeleteCartItem,
+    handleCreateCartOrder,
   };
 };

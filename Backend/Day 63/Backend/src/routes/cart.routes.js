@@ -7,6 +7,7 @@ import {
 } from "../validator/cart.validator.js";
 import {
   addToCart,
+  createOrderController,
   decrementCartItemQuantity,
   deleteCartItem,
   getCart,
@@ -77,5 +78,13 @@ router.delete(
   authenticateUser,
   deleteCartItem,
 );
+
+/**
+ * @route POST /api/cart/payment/create/order
+ * @desc Create an order for payment
+ * @access Private
+ * @argument amount - Amount for the order (in INR)
+ */
+router.post("/payment/create/order", authenticateUser, createOrderController);
 
 export default router;
