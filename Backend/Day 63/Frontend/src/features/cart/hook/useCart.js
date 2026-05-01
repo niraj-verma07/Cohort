@@ -5,6 +5,7 @@ import {
   decrementCartItemQuantity,
   deleteCartItem,
   createCartOrder,
+  verifyCartOrder,
 } from "../service/cart.api";
 import { useDispatch } from "react-redux";
 import {
@@ -43,9 +44,23 @@ export const useCart = () => {
     dispatch(removeItem({ productId, variantId }));
   }
 
-  async function handleCreateCartOrder({ amount }) {
-    const data = await createCartOrder({ amount });
+  async function handleCreateCartOrder() {
+    const data = await createCartOrder();
     return data;
+  }
+
+  async function handleVerifyCartOrder({
+    razorpay_order_id,
+    razorpay_payment_id,
+    razorpay_signature,
+  }) {
+    const data = await verifyCartOrder({
+      razorpay_order_id,
+      razorpay_payment_id,
+      razorpay_signature,
+    });
+
+    return data.success;
   }
 
   return {
@@ -55,5 +70,6 @@ export const useCart = () => {
     handleDecrementCartItem,
     handleDeleteCartItem,
     handleCreateCartOrder,
+    handleVerifyCartOrder,
   };
 };

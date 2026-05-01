@@ -29,10 +29,12 @@ const Cart = () => {
     handleDecrementCartItem,
     handleDeleteCartItem,
     handleCreateCartOrder,
+    handleVerifyCartOrder,
   } = useCart();
   const navigate = useNavigate();
 
   const { error, isLoading, Razorpay } = useRazorpay();
+  const user = useSelector((state) => state.user);
 
   /* Local quantity state — key: cartItem._id, value: number */
   const [quantities, setQuantities] = useState({});
@@ -68,8 +70,34 @@ const Cart = () => {
     `${currency} ${Number(amount).toLocaleString("en-IN")}`;
 
   async function handleCheckout() {
-    const order = await handleCreateCartOrder({amount:1000, currency:"INR"});
-    console.log(order.order);
+    const order = await handleCreateCartOrder();
+    console.log(order);
+
+    const options = {
+      key: "rzp_test_Sk3DR4BOQOqeZS",
+      amount: order.order.amount,
+      currency: order.order.currency,
+      name: "Snitch",
+      description: "Test Transaction",
+      order_id: order.order.id, // Generate order_id on server
+      handler: (response) => {
+        const isValid = handleVerifyCartOrder(response);
+        if (isValid) {
+          navigate(`/order-success?order_id=${response.razorpay_order_id}`);
+        }
+      },
+      prefill: {
+        name: user?.fullname,
+        email: user?.email,
+        contact: user?.contact,
+      },
+      theme: {
+        color: tokens.primary,
+      },
+    };
+
+    const razorpayInstance = new Razorpay(options);
+    razorpayInstance.open();
   }
 
   /* ─── Empty state ─── */
